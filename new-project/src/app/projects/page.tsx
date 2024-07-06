@@ -1,7 +1,5 @@
-// src/app/projects/page.tsx
 "use client";
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from "react";
 import ProjectCard from "../components/ProjectCard";
 
 type Project = {
@@ -58,37 +56,32 @@ const projects: Project[] = [
 
 const ITEMS_PER_PAGE = 4;
 
-export default function Projects() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const query = new URLSearchParams(location.search);
-  const currentPage = parseInt(query.get("page") || "1", 10);
-
-  const [currentProjects, setCurrentProjects] = useState<Project[]>([]);
-
-  useEffect(() => {
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const endIndex = startIndex + ITEMS_PER_PAGE;
-    setCurrentProjects(projects.slice(startIndex, endIndex));
-  }, [currentPage]);
-
-  const totalPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
+const ProjectList: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      navigate(`?page=${currentPage + 1}`);
+      setCurrentPage(currentPage + 1);
     }
   };
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
-      navigate(`?page=${currentPage - 1}`);
+      setCurrentPage(currentPage - 1);
     }
   };
 
+  const totalPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const visibleProjects = projects.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
+
   return (
-    <div className="container mx-auto my-8">
-      {currentProjects.map((project, index) => (
+    <div>
+      {/* Render your projects */}
+      {visibleProjects.map((project, index) => (
         <ProjectCard
           key={index}
           title={project.title}
@@ -97,7 +90,9 @@ export default function Projects() {
           link={project.link}
         />
       ))}
-      <div className="flex justify-between mt-4">
+
+      {/* Pagination buttons */}
+      <div className="flex justify-between mx-4 mt-4">
         <button
           type="button"
           onClick={handlePrevPage}
@@ -149,4 +144,6 @@ export default function Projects() {
       </div>
     </div>
   );
-}
+};
+
+export default ProjectList;
