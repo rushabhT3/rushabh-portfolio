@@ -20,7 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <p className="text-sm text-gray-500 mb-2 dark:text-gray-400">
         <strong>Tech Used:</strong> {tech}
       </p>
-      <a href={link} className="text-blue-500 dark:text-blue-400">
+      <a href={link} className="text-blue-500 dark:text-blue-400 hover:underline">
         View Project on GitHub 🔗
       </a>
     </div>

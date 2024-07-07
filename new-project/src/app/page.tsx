@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-4 md:px-6 lg:px-8 flex flex-col items-center justify-center min-h-screen max-w-screen-md space-y-4">
-      <h1 className="text-2xl font-bold text-google-gray-800">
+      <h1 className="text-2xl font-bold text-google-gray-800 text-center">
         Hello, I'm Rushabh Trivedi
       </h1>
       <p className="text-base leading-relaxed text-google-gray-600 text-center">

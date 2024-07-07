@@ -2,7 +2,7 @@
 
 const aboutMe = {
   intro:
-    "I am a software engineer from Amravati, Maharashtra, India. My expertise lies in full stack development with a focus on both frontend and backend technologies.",
+    "I'm a seasoned full-stack developer with experience across diverse projects, specializing in databases, programming languages, and cloud tools to drive scalable web development.",
   skills: {
     "Skills and Technologies": {
       "Programming Languages": "Python, JavaScript, TypeScript, Go",

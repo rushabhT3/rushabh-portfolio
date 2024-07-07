@@ -33,6 +33,11 @@ const Navbar: React.FC = () => {
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
+    if (!menuOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
   };
 
   const dynamicStyle = {
@@ -51,6 +56,14 @@ const Navbar: React.FC = () => {
     }
     return color;
   }
+
+  // Menu items data
+  const menuItems = [
+    { text: "Home", href: "/" },
+    { text: "About", href: "/about" },
+    { text: "Projects", href: "/projects" },
+    { text: "Contact", href: "/contact" },
+  ];
 
   return (
     <nav className="bg-gray-800 p-4">
@@ -94,7 +107,7 @@ const Navbar: React.FC = () => {
           >
             <IoMdClose />
           </button>
-          <Link href="/" passHref>
+          {/* <Link href="/" passHref>
             <span
               className="text-white text-2xl py-4 hover:underline"
               onClick={handleMenuToggle}
@@ -125,7 +138,17 @@ const Navbar: React.FC = () => {
             >
               Contact
             </span>
-          </Link>
+          </Link> */}
+          {menuItems.map((item) => (
+            <Link key={item.text} href={item.href} passHref>
+              <span
+                className="text-white text-2xl py-4 hover:underline block"
+                onClick={handleMenuToggle}
+              >
+                {item.text}
+              </span>
+            </Link>
+          ))}
         </div>
       )}
     </nav>
