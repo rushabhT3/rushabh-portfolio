@@ -14,7 +14,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   link,
 }) => {
   return (
-    <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md mb-4 mx-4 mt-4">
+    <div className="bg-text-google-gray-800 p-4 rounded-lg shadow-md mb-4 mx-4 mt-4">
       <h2 className="text-2xl font-bold mb-2 text-google-gray-800">{title}</h2>
       <p className="mb-2 text-google-gray-600">{description}</p>
       <p className="text-sm text-gray-500 mb-2 text-google-gray-400">
