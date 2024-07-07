@@ -18,6 +18,14 @@ export default function Home() {
       >
         Learn more about me
       </Link>
+      <Link
+        href="https://tomato-cecelia-50.tiiny.site/" // Your actual resume link
+        target="_blank" // Open in a new tab
+        rel="noopener noreferrer" // Security measures
+        className="inline-flex items-center px-3 py-1.5 text-black font-bold rounded-full bg-google-blue-500 hover:bg-google-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-google-blue-500"
+      >
+        View my resume
+      </Link>
       <p className="text-base text-google-gray-600 text-center">
         Interested in working together or have a project in mind?
         <br />
