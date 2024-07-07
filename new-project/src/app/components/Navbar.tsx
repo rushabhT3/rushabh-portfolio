@@ -1,10 +1,12 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { IoMdMenu, IoMdClose } from "react-icons/io";
 
 const Navbar: React.FC = () => {
   const [hovered, setHovered] = useState(false);
   const [currentColor, setCurrentColor] = useState("white");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | undefined;
@@ -27,6 +29,10 @@ const Navbar: React.FC = () => {
 
   const handleMouseLeave = () => {
     setHovered(false);
+  };
+
+  const handleMenuToggle = () => {
+    setMenuOpen(!menuOpen);
   };
 
   const dynamicStyle = {
@@ -57,7 +63,12 @@ const Navbar: React.FC = () => {
         >
           Rushabh Trivedi
         </div>
-        <div>
+        <div className="block md:hidden">
+          <button onClick={handleMenuToggle} className="text-white text-3xl">
+            {menuOpen ? <IoMdClose /> : <IoMdMenu />}
+          </button>
+        </div>
+        <div className={`md:flex ${menuOpen ? "block" : "hidden"} md:block`}>
           <Link href="/" passHref>
             <span className="text-gray-300 hover:text-white px-3">Home</span>
           </Link>
@@ -74,6 +85,49 @@ const Navbar: React.FC = () => {
           </Link>
         </div>
       </div>
+
+      {menuOpen && (
+        <div className="md:hidden bg-gray-800 fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center z-50">
+          <button
+            onClick={handleMenuToggle}
+            className="text-white text-3xl absolute top-4 right-4"
+          >
+            <IoMdClose />
+          </button>
+          <Link href="/" passHref>
+            <span
+              className="text-white text-2xl py-4 hover:underline"
+              onClick={handleMenuToggle}
+            >
+              Home
+            </span>
+          </Link>
+          <Link href="/about" passHref>
+            <span
+              className="text-white text-2xl py-4 hover:underline"
+              onClick={handleMenuToggle}
+            >
+              About
+            </span>
+          </Link>
+          <Link href="/projects" passHref>
+            <span
+              className="text-white text-2xl py-4 hover:underline"
+              onClick={handleMenuToggle}
+            >
+              Projects
+            </span>
+          </Link>
+          <Link href="/contact" passHref>
+            <span
+              className="text-white text-2xl py-4 hover:underline"
+              onClick={handleMenuToggle}
+            >
+              Contact
+            </span>
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };
