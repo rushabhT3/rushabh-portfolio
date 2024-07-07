@@ -31,7 +31,7 @@ export default function Contact() {
       <div className="max-w-lg prose md:prose-sm">
         {" "}
         {/* Responsive prose class */}
-        <p className="text-lg text-gray-700 mb-4 text-center">
+        <p className="text-lg text-google-gray-700 mb-4 text-center">
           You can reach out to me through the following contact details:
         </p>
         <ul className="space-y-4">
@@ -40,11 +40,14 @@ export default function Contact() {
               key={index}
               className="flex flex-col md:flex-row items-start md:items-center space-y-2 md:space-y-0"
             >
-              <span className="font-bold text-gray-700 text-right md:text-left mr-4">
+              <span className="font-bold text-google-gray-700 text-right md:text-left mr-4">
                 {detail.label}:
               </span>
               {detail.link ? (
-                <a href={detail.link} className="text-blue-500 hover:underline">
+                <a
+                  href={detail.link}
+                  className="text-blue-500 hover:underline hover:font-bold"
+                >
                   {detail.value}
                 </a>
               ) : (
