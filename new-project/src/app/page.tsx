@@ -14,7 +14,7 @@ export default function Home() {
       </p>
       <Link
         href="/about"
-        className="inline-flex items-center px-3 py-1.5 text-gray font-bold rounded-full bg-google-blue-500 hover:bg-google-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-google-blue-500 dark:text-white"
+        className="inline-flex items-center px-3 py-1.5 text-gray font-bold rounded-full bg-google-blue-500 hover:bg-google-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-google-blue-500 dark:text-white hover:underline"
       >
         Learn more about me
       </Link>
@@ -22,7 +22,7 @@ export default function Home() {
         href="https://tomato-cecelia-50.tiiny.site/" // Your actual resume link
         target="_blank" // Open in a new tab
         rel="noopener noreferrer" // Security measures
-        className="inline-flex items-center px-3 py-1.5 text-gray font-bold rounded-full bg-google-blue-500 hover:bg-google-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-google-blue-500"
+        className="inline-flex items-center px-3 py-1.5 text-gray font-bold rounded-full bg-google-blue-500 hover:bg-google-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-google-blue-500 hover:underline"
       >
         View my resume
       </Link>
