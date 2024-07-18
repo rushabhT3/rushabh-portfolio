@@ -23,6 +23,11 @@ const contactDetails = [
     value: "rushabhtrivedi03",
     link: "https://leetcode.com/rushabhtrivedi03",
   },
+  {
+    label: "HackerRank",
+    value: "rushabhtrivedi03",
+    link: "https://www.hackerrank.com/profile/rushabhtrivedi03",
+  },
 ];
 
 export default function Contact() {
@@ -32,7 +37,7 @@ export default function Contact() {
         {" "}
         {/* Responsive prose class */}
         <p className="text-lg text-google-gray-700 mb-4 text-center">
-          You can reach out to me through the following contact details:
+          You can reach out to me through the following contact details/ profiles:
         </p>
         <ul className="space-y-4">
           {contactDetails.map((detail, index) => (

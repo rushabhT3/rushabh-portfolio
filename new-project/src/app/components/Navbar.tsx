@@ -62,6 +62,7 @@ const Navbar: React.FC = () => {
     { text: "Home", href: "/" },
     { text: "About", href: "/about" },
     { text: "Projects", href: "/projects" },
+    {text : "Bored?", href: "/joke"},
     { text: "Contact", href: "/contact" },
   ];
 
@@ -82,7 +83,14 @@ const Navbar: React.FC = () => {
           </button>
         </div>
         <div className={`md:flex ${menuOpen ? "block" : "hidden"} md:block`}>
-          <Link href="/" passHref>
+          {menuItems.map((item) => (
+            <Link key={item.text} href={item.href} passHref>
+              <span className="text-gray-300 hover:text-white px-3">
+                {item.text}
+              </span>
+            </Link>
+          ))}
+          {/* <Link href="/" passHref>
             <span className="text-gray-300 hover:text-white px-3">Home</span>
           </Link>
           <Link href="/about" passHref>
@@ -95,7 +103,7 @@ const Navbar: React.FC = () => {
           </Link>
           <Link href="/contact" passHref>
             <span className="text-gray-300 hover:text-white px-3">Contact</span>
-          </Link>
+          </Link> */}
         </div>
       </div>
 
@@ -107,38 +115,6 @@ const Navbar: React.FC = () => {
           >
             <IoMdClose />
           </button>
-          {/* <Link href="/" passHref>
-            <span
-              className="text-white text-2xl py-4 hover:underline"
-              onClick={handleMenuToggle}
-            >
-              Home
-            </span>
-          </Link>
-          <Link href="/about" passHref>
-            <span
-              className="text-white text-2xl py-4 hover:underline"
-              onClick={handleMenuToggle}
-            >
-              About
-            </span>
-          </Link>
-          <Link href="/projects" passHref>
-            <span
-              className="text-white text-2xl py-4 hover:underline"
-              onClick={handleMenuToggle}
-            >
-              Projects
-            </span>
-          </Link>
-          <Link href="/contact" passHref>
-            <span
-              className="text-white text-2xl py-4 hover:underline"
-              onClick={handleMenuToggle}
-            >
-              Contact
-            </span>
-          </Link> */}
           {menuItems.map((item) => (
             <Link key={item.text} href={item.href} passHref>
               <span
