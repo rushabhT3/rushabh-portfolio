@@ -9,14 +9,14 @@ export default function Home() {
         Hello, I'm Rushabh Trivedi
       </h1>
       <p className="text-base leading-relaxed text-google-gray-600 text-center">
-        Welcome to my portfolio website. Here you can learn more about my
-        skills, projects, and how to contact me.
+        Welcome to my portfolio website! Here, you'll find information about my
+        skills, projects, and ways to get in touch with me.
       </p>
       <Link
         href="/about"
         className="inline-flex items-center px-3 py-1.5 text-gray font-bold rounded-full bg-google-blue-500 hover:bg-google-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-google-blue-500 dark:text-white hover:underline"
       >
-        Learn more about me
+        Discover more about me
       </Link>
       <Link
         href="https://tomato-cecelia-50.tiiny.site/" // Your actual resume link
@@ -27,12 +27,12 @@ export default function Home() {
         View my resume
       </Link>
       <p className="text-base text-google-gray-600 text-center">
-        Interested in working together or have a project in mind?
+        Interested in collaborating or have a project in mind?
         <br />
-        Contact me at{" "}
+        Feel free to reach out at{" "}
         <a
           href="mailto:rushabhtrivedi03@gmail.com"
-          className="text-google-blue-500 underline"
+          className="text-google-blue-500 underline hover:font-bold"
         >
           rushabhtrivedi03@gmail.com
         </a>

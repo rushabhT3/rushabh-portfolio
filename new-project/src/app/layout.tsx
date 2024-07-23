@@ -4,12 +4,31 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ArrowButton from "./components/ArrowButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Rushabh Trivedi",
-  description: "Portfolio Website",
+  title: "Rushabh Trivedi - Full-Stack Developer",
+  description:
+    "A seasoned full-stack developer with experience across diverse projects, specializing in databases, programming languages, and cloud tools to drive scalable web development. Explore my skills, technologies, and professional profiles.",
+  openGraph: {
+    title: "Rushabh Trivedi - Full-Stack Developer",
+    description:
+      "A seasoned full-stack developer with experience across diverse projects, specializing in databases, programming languages, and cloud tools to drive scalable web development. Explore my skills, technologies, and professional profiles.",
+    // url: "https://your-website-url.com/about-me",
+    siteName: "Rushabh Trivedi Portfolio",
+    // images: [
+    //   {
+    //     url: "https://your-website-url.com/images/og-image.jpg",
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "Rushabh Trivedi - Full-Stack Developer",
+    //   },
+    // ],
+    locale: "en_US",
+    type: "profile",
+  },
 };
 
 interface RootLayoutProps {
@@ -33,6 +52,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </main>
         </div>
         <Footer />
+        {/* Arrow Button */}
+        <ArrowButton />
       </body>
     </html>
   );

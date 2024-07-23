@@ -52,6 +52,13 @@ const projects: Project[] = [
     tech: "Express.js, AWS, JWT, Bcrypt, Mongoose (MongoDB), Brevo",
     link: "https://github.com/rushabhT3/mongoose-Expense-Tracker",
   },
+  {
+    title: "Portfolio Website",
+    description:
+      "A modern and responsive portfolio website showcasing my projects and skills. Built using Next.js and TypeScript for a robust and scalable frontend, and styled with Tailwind CSS for a clean and adaptive design. Deployed and hosted on Vercel for seamless performance and accessibility.",
+    tech: "Next.js, TypeScript, Tailwind CSS",
+    link: "https://github.com/rushabhT3/rushabh-portfolio/tree/main/new-project",
+  },
 ];
 
 const ITEMS_PER_PAGE = 4;

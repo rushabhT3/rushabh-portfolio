@@ -12,32 +12,17 @@ const contactDetails = [
     label: "LinkedIn",
     value: "trivedirushabh",
     link: "https://www.linkedin.com/in/trivedirushabh/",
-  },
-  {
-    label: "GitHub",
-    value: "rushabhT3",
-    link: "https://github.com/rushabhT3/",
-  },
-  {
-    label: "LeetCode",
-    value: "rushabhtrivedi03",
-    link: "https://leetcode.com/rushabhtrivedi03",
-  },
-  {
-    label: "HackerRank",
-    value: "rushabhtrivedi03",
-    link: "https://www.hackerrank.com/profile/rushabhtrivedi03",
-  },
+  }
 ];
 
 export default function Contact() {
   return (
-    <div className="container mx-auto px-4 py-8 flex justify-center">
+    <div className="container mx-auto px-4 py-40 flex justify-center">
       <div className="max-w-lg prose md:prose-sm">
         {" "}
         {/* Responsive prose class */}
         <p className="text-lg text-google-gray-700 mb-4 text-center">
-          You can reach out to me through the following contact details/ profiles:
+          Feel free to connect with me through the following contact details and profiles:
         </p>
         <ul className="space-y-4">
           {contactDetails.map((detail, index) => (
@@ -51,7 +36,7 @@ export default function Contact() {
               {detail.link ? (
                 <a
                   href={detail.link}
-                  className="text-blue-500 hover:underline hover:font-bold"
+                  className="text-blue-600 hover:underline hover:font-bold"
                 >
                   {detail.value}
                 </a>

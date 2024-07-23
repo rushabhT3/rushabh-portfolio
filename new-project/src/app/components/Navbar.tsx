@@ -62,72 +62,61 @@ const Navbar: React.FC = () => {
     { text: "Home", href: "/" },
     { text: "About", href: "/about" },
     { text: "Projects", href: "/projects" },
-    {text : "Bored?", href: "/joke"},
+    { text: "Bored?", href: "/joke" },
     { text: "Contact", href: "/contact" },
   ];
 
   return (
-    <nav className="bg-gray-800 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div
-          className="text-white text-xl"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          style={dynamicStyle}
-        >
-          Rushabh Trivedi
-        </div>
-        <div className="block md:hidden">
-          <button onClick={handleMenuToggle} className="text-white text-3xl">
-            {menuOpen ? <IoMdClose /> : <IoMdMenu />}
-          </button>
-        </div>
-        <div className={`md:flex ${menuOpen ? "block" : "hidden"} md:block`}>
-          {menuItems.map((item) => (
-            <Link key={item.text} href={item.href} passHref>
-              <span className="text-gray-300 hover:text-white px-3">
-                {item.text}
-              </span>
-            </Link>
-          ))}
-          {/* <Link href="/" passHref>
-            <span className="text-gray-300 hover:text-white px-3">Home</span>
-          </Link>
-          <Link href="/about" passHref>
-            <span className="text-gray-300 hover:text-white px-3">About</span>
-          </Link>
-          <Link href="/projects" passHref>
-            <span className="text-gray-300 hover:text-white px-3">
-              Projects
-            </span>
-          </Link>
-          <Link href="/contact" passHref>
-            <span className="text-gray-300 hover:text-white px-3">Contact</span>
-          </Link> */}
-        </div>
-      </div>
-
-      {menuOpen && (
-        <div className="md:hidden bg-gray-800 fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center z-50">
-          <button
-            onClick={handleMenuToggle}
-            className="text-white text-3xl absolute top-4 right-4"
+    <>
+      <nav className="bg-gray-800 p-4 fixed w-full z-50">
+        <div className="container mx-auto flex justify-between items-center">
+          <div
+            className="text-white text-xl"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={dynamicStyle}
           >
-            <IoMdClose />
-          </button>
-          {menuItems.map((item) => (
-            <Link key={item.text} href={item.href} passHref>
-              <span
-                className="text-white text-2xl py-4 hover:underline block"
-                onClick={handleMenuToggle}
-              >
-                {item.text}
-              </span>
-            </Link>
-          ))}
+            Rushabh Trivedi
+          </div>
+          <div className="block md:hidden">
+            <button onClick={handleMenuToggle} className="text-white text-3xl">
+              {menuOpen ? <IoMdClose /> : <IoMdMenu />}
+            </button>
+          </div>
+          <div className={`md:flex ${menuOpen ? "block" : "hidden"} md:block`}>
+            {menuItems.map((item) => (
+              <Link key={item.text} href={item.href} passHref>
+                <span className="text-gray-300 hover:text-white px-3">
+                  {item.text}
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
-      )}
-    </nav>
+
+        {menuOpen && (
+          <div className="md:hidden bg-gray-800 fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center z-50">
+            <button
+              onClick={handleMenuToggle}
+              className="text-white text-3xl absolute top-4 right-4"
+            >
+              <IoMdClose />
+            </button>
+            {menuItems.map((item) => (
+              <Link key={item.text} href={item.href} passHref>
+                <span
+                  className="text-white text-2xl py-4 hover:underline block"
+                  onClick={handleMenuToggle}
+                >
+                  {item.text}
+                </span>
+              </Link>
+            ))}
+          </div>
+        )}
+      </nav>
+      <div className="pt-20">{/* Your main content goes here */}</div>
+    </>
   );
 };
 
