@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProjectCard from "../components/ProjectCard";
 
 type Project = {
@@ -65,6 +65,10 @@ const ITEMS_PER_PAGE = 4;
 
 const ProjectList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {

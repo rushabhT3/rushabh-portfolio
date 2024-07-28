@@ -3,6 +3,8 @@
 import Link from "next/link";
 
 export default function Home() {
+  const resumeLink = process.env.NEXT_PUBLIC_RESUME_LINK || '/default-resume-url';
+
   return (
     <div className="container mx-auto px-4 py-4 md:px-6 lg:px-8 flex flex-col items-center justify-center min-h-screen max-w-screen-md space-y-4">
       <h1 className="text-2xl font-bold text-google-gray-800 text-center">
@@ -19,7 +21,7 @@ export default function Home() {
         Discover more about me
       </Link>
       <Link
-        href="https://tomato-cecelia-50.tiiny.site/" // Your actual resume link
+        href={resumeLink} // Your actual resume link
         target="_blank" // Open in a new tab
         rel="noopener noreferrer" // Security measures
         className="inline-flex items-center px-3 py-1.5 text-gray font-bold rounded-full bg-google-blue-500 hover:bg-google-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-google-blue-500 hover:underline"
