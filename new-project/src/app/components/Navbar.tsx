@@ -1,121 +1,129 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
+import {
+  FaHome,
+  FaUser,
+  FaProjectDiagram,
+  FaLaugh,
+  FaEnvelope,
+} from "react-icons/fa";
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const [hovered, setHovered] = useState(false);
-  const [currentColor, setCurrentColor] = useState("white");
+  const [currentColor, setCurrentColor] = useState("#ffffff");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout | undefined;
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
 
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    let interval: any;
     if (hovered) {
       interval = setInterval(() => {
         setCurrentColor(getRandomColor());
-      }, 500); // Change color every 500ms (adjust as needed)
+      }, 500);
     } else {
       clearInterval(interval);
-      setCurrentColor("white"); // Reset to default color when not hovered
+      setCurrentColor("#ffffff");
     }
-
     return () => clearInterval(interval);
   }, [hovered]);
 
-  const handleMouseEnter = () => {
-    setHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHovered(false);
-  };
-
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
-    if (!menuOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
+    document.body.style.overflow = menuOpen ? "auto" : "hidden";
   };
 
-  const dynamicStyle = {
-    color: currentColor,
-    transition: "color 0.3s ease",
-    cursor: "pointer",
-    display: "inline-block",
+  const getRandomColor = () => {
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   };
 
-  // Function to generate a random color
-  function getRandomColor() {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
-
-  // Menu items data
   const menuItems = [
-    { text: "Home", href: "/" },
-    { text: "About", href: "/about" },
-    { text: "Projects", href: "/projects" },
-    { text: "Bored?", href: "/joke" },
-    { text: "Contact", href: "/contact" },
+    { text: "Home", href: "/", icon: FaHome },
+    { text: "About", href: "/about", icon: FaUser },
+    { text: "Projects", href: "/projects", icon: FaProjectDiagram },
+    { text: "Bored?", href: "/joke", icon: FaLaugh },
+    { text: "Contact", href: "/contact", icon: FaEnvelope },
   ];
 
   return (
     <>
-      <nav className="bg-gray-800 p-4 fixed w-full z-50">
-        <div className="container mx-auto flex justify-between items-center">
-          <div
-            className="text-white text-xl"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            style={dynamicStyle}
+      <motion.nav
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          scrolled ? "bg-gray-900 shadow-lg" : "bg-gray-800"
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", stiffness: 120, damping: 20 }}
+      >
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+          <motion.div
+            className="text-2xl font-bold cursor-pointer"
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            style={{ color: currentColor }}
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
             Rushabh Trivedi
-          </div>
-          <div className="block md:hidden">
-            <button onClick={handleMenuToggle} className="text-white text-3xl">
-              {menuOpen ? <IoMdClose /> : <IoMdMenu />}
-            </button>
-          </div>
-          <div className={`md:flex ${menuOpen ? "block" : "hidden"} md:block`}>
+          </motion.div>
+          <div className="hidden md:flex space-x-6">
             {menuItems.map((item) => (
               <Link key={item.text} href={item.href} passHref>
-                <span className="text-gray-300 hover:text-white px-3">
-                  {item.text}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {menuOpen && (
-          <div className="md:hidden bg-gray-800 fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center z-50">
-            <button
-              onClick={handleMenuToggle}
-              className="text-white text-3xl absolute top-4 right-4"
-            >
-              <IoMdClose />
-            </button>
-            {menuItems.map((item) => (
-              <Link key={item.text} href={item.href} passHref>
-                <span
-                  className="text-white text-2xl py-4 hover:underline block"
-                  onClick={handleMenuToggle}
+                <motion.span
+                  className="text-white hover:text-gray-300 flex items-center cursor-pointer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                 >
+                  <item.icon className="mr-2" />
                   {item.text}
-                </span>
+                </motion.span>
               </Link>
             ))}
           </div>
-        )}
-      </nav>
-      <div className="pt-20">{/* Your main content goes here */}</div>
+          <motion.button
+            className="md:hidden text-white text-2xl"
+            onClick={handleMenuToggle}
+            whileTap={{ scale: 0.9 }}
+          >
+            {menuOpen ? <IoMdClose /> : <IoMdMenu />}
+          </motion.button>
+        </div>
+      </motion.nav>
+
+      {menuOpen && (
+        <motion.div
+          className="fixed inset-0 bg-gray-900 z-40 flex flex-col items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          {menuItems.map((item) => (
+            <Link key={item.text} href={item.href} passHref>
+              <motion.span
+                className="text-white text-2xl py-4 flex items-center cursor-pointer"
+                onClick={handleMenuToggle}
+                whileHover={{ scale: 1.1, x: 20 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <item.icon className="mr-4" />
+                {item.text}
+              </motion.span>
+            </Link>
+          ))}
+        </motion.div>
+      )}
+      <div className="pt-10">{/* Your main content goes here */}</div>
     </>
   );
 };

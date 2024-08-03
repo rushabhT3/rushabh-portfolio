@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import ProjectCard from "../components/ProjectCard";
 
 type Project = {
@@ -13,7 +15,7 @@ const projects: Project[] = [
   {
     title: "Full Stack Mailbox Client",
     description:
-      "A comprehensive email management system with secure authentication and database encryption, featuring a sleek user interface built with React and Tailwind CSS. Includes JWT authentication and AWS integration for enhanced security and performance.",
+      "A comprehensive email management system with secure authentication and database encryption, featuring a sleek user interface built with React and Tailwind CSS. Includes JWT authentication for enhanced security and performance.",
     tech: "React.js, Express.js, MySQL, Sequelize, Tailwind CSS, React Router, JWT",
     link: "https://github.com/rushabhT3/mailBoxClientReact",
   },
@@ -56,7 +58,7 @@ const projects: Project[] = [
     title: "Portfolio Website",
     description:
       "A modern and responsive portfolio website showcasing my projects and skills. Built using Next.js and TypeScript for a robust and scalable frontend, and styled with Tailwind CSS for a clean and adaptive design. Deployed and hosted on Vercel for seamless performance and accessibility.",
-    tech: "Next.js, TypeScript, Tailwind CSS",
+    tech: "Next.js, TypeScript, Tailwind CSS, react-icons, framer-motion, lucide-react",
     link: "https://github.com/rushabhT3/rushabh-portfolio/tree/main/new-project",
   },
 ];
@@ -65,9 +67,24 @@ const ITEMS_PER_PAGE = 4;
 
 const ProjectList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const prefersDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    setDarkMode(prefersDarkMode);
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e: MediaQueryListEvent) => setDarkMode(e.matches);
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
   const handleNextPage = () => {
@@ -90,68 +107,67 @@ const ProjectList: React.FC = () => {
   );
 
   return (
-    <div>
-      {/* Render your projects */}
-      {visibleProjects.map((project, index) => (
-        <ProjectCard
-          key={index}
-          title={project.title}
-          description={project.description}
-          tech={project.tech}
-          link={project.link}
-        />
-      ))}
+    <div className={`min-h-screen flex flex-col ${darkMode ? "dark" : ""}`}>
+      <div className="flex-grow bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-900 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl font-bold text-center mb-8 text-gray-800 dark:text-white"
+          >
+            My Projects
+          </motion.h1>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentPage}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              {visibleProjects.map((project, index) => (
+                <ProjectCard
+                  key={index}
+                  title={project.title}
+                  description={project.description}
+                  tech={project.tech}
+                  link={project.link}
+                />
+              ))}
+            </motion.div>
+          </AnimatePresence>
 
-      {/* Pagination buttons */}
-      <div className="flex justify-between mx-4 mt-4">
-        <button
-          type="button"
-          onClick={handlePrevPage}
-          disabled={currentPage === 1}
-          className={`bg-gray-800 text-white rounded-l-md border-r border-gray-100 py-2 hover:bg-red-700 hover:text-white px-3 ${
-            currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-        >
-          <div className="flex flex-row align-middle">
-            <svg
-              className="w-5 mr-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
+          {/* Pagination buttons */}
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              className={`bg-indigo-500 text-white rounded-l-md py-2 px-4 flex items-center ${
+                currentPage === 1
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-indigo-600"
+              }`}
             >
-              <path
-                fillRule="evenodd"
-                d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-            <p className="ml-2">Prev</p>
-          </div>
-        </button>
-        <button
-          type="button"
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages}
-          className={`bg-gray-800 text-white rounded-r-md py-2 border-l border-gray-200 hover:bg-red-700 hover:text-white px-3 ${
-            currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-        >
-          <div className="flex flex-row align-middle">
-            <span className="mr-2">Next</span>
-            <svg
-              className="w-5 ml-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
+              <FaChevronLeft className="mr-2" />
+              Prev
+            </button>
+            <span className="bg-white dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 border-t border-b border-gray-300 dark:border-gray-600">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className={`bg-indigo-500 text-white rounded-r-md py-2 px-4 flex items-center ${
+                currentPage === totalPages
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-indigo-600"
+              }`}
             >
-              <path
-                fillRule="evenodd"
-                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
+              Next
+              <FaChevronRight className="ml-2" />
+            </button>
           </div>
-        </button>
+        </div>
       </div>
     </div>
   );
