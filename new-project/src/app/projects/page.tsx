@@ -34,11 +34,11 @@ const projects: Project[] = [
     link: "https://github.com/rushabhT3/node.js/tree/main/Express.Js/AWSapp",
   },
   {
-    title: "Todo App",
+    title: "Multi-Column-To-Do-App with Drag and Drop Functionality",
     description:
-      "A simple yet powerful Todo application built with Next.js and MongoDB. Features a clean and responsive user interface created with Tailwind CSS. Provides functionalities to add, edit, and delete tasks, ensuring a seamless user experience.",
-    tech: "Next.js, MongoDB, Tailwind.css, Axios",
-    link: "https://github.com/rushabhT3/nextjs-todo-app",
+    "A dynamic Todo application built with Next.js and MongoDB, featuring a drag-and-drop interface. Utilizes Tailwind CSS for a responsive design, shadcn/ui for enhanced interactions, and Lucide React for iconic visuals. Allows users to add, edit, and delete tasks, with the added functionality of dragging and dropping tasks to reorder them.",
+    tech: "TypeScript, Next.js, MongoDB, @hello-pangea/dnd, Tailwind CSS, shadcn/ui, Lucide React",
+    link: "https://github.com/rushabhT3/Multi-Column-To-Do-App",
   },
   {
     title: "Frontend Expense Tracker",
