@@ -24,6 +24,12 @@
     "link": "https://github.com/rushabhT3/Multi-Column-To-Do-App"
   },
   {
+    "title": "Full Stack Animal Lover App",
+    "description": "A comprehensive animal management system with a user-friendly interface for adding and favoriting animals. The app showcases a list of all animals and a separate section for favorite animals. Built with a modern tech stack, it features secure authentication, a responsive design, and uses Pydantic for data validation. The backend utilizes SQLAlchemy ORM for efficient database operations.",
+    "tech": "FastAPI, React.js, Tailwind CSS, React Router, JWT, SQLAlchemy ORM, Pydantic, Lucide React",
+    "link": "https://github.com/rushabhT3/fastapi-react-try/tree/main/auth%20app"
+  },
+  {
     "title": "Frontend Expense Tracker",
     "description": "A serverless expense tracker application powered by Google Firebase for the backend and React.js for the frontend. Features include user authentication, real-time data updates, and an intuitive user interface for tracking expenses.",
     "tech": "React.js, React Router, Firebase",
