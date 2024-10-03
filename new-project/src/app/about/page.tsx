@@ -26,8 +26,8 @@ const aboutMe: AboutMe = {
   intro:
     "I'm a seasoned full-stack developer with experience across diverse projects, specializing in databases, programming languages, and cloud tools to drive scalable web development.",
   skillsAndTechnologies: {
-    "Programming Languages": "Python, JavaScript, TypeScript, Go",
-    Backend: "Node.js, Express.js, Django, Go-Gin",
+    "Programming Languages": "Python, JavaScript, TypeScript, Golang",
+    Backend: "Node.js, Express.js, Django, FastAPI, Golang",
     Frontend: "ReactJS, NextJS, Redux",
     "Database & Tools":
       "SQL, MongoDB, AWS, Redis, Nginx, Jenkins, React Router",
