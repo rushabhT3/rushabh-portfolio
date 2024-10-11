@@ -47,7 +47,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <div className="flex-grow flex flex-col">
           <Navbar />
-          <main>
+          {/* Add flex-grow to main */}
+          <main className="flex-grow">
             <Suspense fallback={<LoadingSpinner />}>{children}</Suspense>
           </main>
         </div>
