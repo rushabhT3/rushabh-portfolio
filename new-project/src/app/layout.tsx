@@ -16,16 +16,7 @@ export const metadata: Metadata = {
     title: "Rushabh Trivedi - Full-Stack Developer",
     description:
       "A seasoned full-stack developer with experience across diverse projects, specializing in databases, programming languages, and cloud tools to drive scalable web development. Explore my skills, technologies, and professional profiles.",
-    // url: "https://your-website-url.com/about-me",
     siteName: "Rushabh Trivedi Portfolio",
-    // images: [
-    //   {
-    //     url: "https://your-website-url.com/images/og-image.jpg",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "Rushabh Trivedi - Full-Stack Developer",
-    //   },
-    // ],
     locale: "en_US",
     type: "profile",
   },
@@ -43,17 +34,13 @@ const LoadingSpinner = () => (
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} flex flex-col min-h-screen`}>
-        <div className="flex-grow flex flex-col">
-          <Navbar />
-          {/* Add flex-grow to main */}
-          <main className="flex-grow">
-            <Suspense fallback={<LoadingSpinner />}>{children}</Suspense>
-          </main>
-        </div>
+    <html lang="en" className="h-full">
+      <body className={`${inter.className} flex flex-col min-h-full`}>
+        <Navbar />
+        <main className="flex-grow">
+          <Suspense fallback={<LoadingSpinner />}>{children}</Suspense>
+        </main>
         <Footer />
-        {/* Arrow Button */}
         <ArrowButton />
       </body>
     </html>
