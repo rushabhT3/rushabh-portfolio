@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaLaughSquint, FaSyncAlt } from "react-icons/fa";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import axios from "axios";
 
 interface Joke {
@@ -81,10 +82,10 @@ const Jokes: React.FC = () => {
             className="jokes-container space-y-12 w-full"
           >
             <motion.div
-              className="text-4xl font-bold text-center flex items-center justify-center cursor-default select-none text-gray-900 dark:text-white mt-16"
+              className="text-2xl xs:text-4xl font-bold text-center flex flex-col xs:flex-row items-center justify-center cursor-default select-none text-gray-900 dark:text-white mt-8 xs:mt-16"
               whileHover={{ scale: 1.05 }}
             >
-              <FaLaughSquint className="mr-4 text-yellow-500" />
+              <FaLaughSquint className="text-4xl xs:text-5xl text-yellow-500 mb-4 xs:mb-0 xs:mr-4" />
               Here's a joke for you!
             </motion.div>
 
@@ -109,7 +110,7 @@ const Jokes: React.FC = () => {
                 >
                   {joke && (
                     <>
-                      <p className="text-2xl leading-relaxed mb-6 text-gray-800 dark:text-gray-200">
+                      <p className="text-xl xs:text-2xl leading-relaxed mb-6 text-gray-800 dark:text-gray-200">
                         {joke.setup}
                       </p>
                       <AnimatePresence>
@@ -118,7 +119,7 @@ const Jokes: React.FC = () => {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
-                            className="text-2xl leading-relaxed mt-6 font-bold text-indigo-600 dark:text-indigo-400"
+                            className="text-xl xs:text-2xl leading-relaxed mt-6 font-bold text-indigo-600 dark:text-indigo-400"
                           >
                             {joke.punchline}
                           </motion.p>
@@ -130,15 +131,23 @@ const Jokes: React.FC = () => {
               )}
             </AnimatePresence>
 
-            <div className="flex space-x-4 justify-center">
+            {/* Buttons */}
+            <div className="flex flex-col xs:flex-row space-y-4 xs:space-y-0 xs:space-x-4 justify-center px-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowPunchline(!showPunchline)}
-                className="px-6 py-3 bg-yellow-500 text-white rounded-full shadow-md hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transition-colors duration-200 text-lg"
+                className="w-full xs:w-auto px-6 py-3 bg-yellow-500 text-white rounded-full shadow-xs hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transition-colors duration-200 text-base xs:text-lg"
                 disabled={loading}
               >
-                {showPunchline ? "Hide Punchline" : "Show Punchline"}
+                <div className="flex items-center justify-center">
+                  {showPunchline ? "Hide" : "Show"} Punchline
+                  {showPunchline ? (
+                    <ChevronUp className="ml-2 h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="ml-2 h-4 w-4" />
+                  )}
+                </div>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -147,7 +156,7 @@ const Jokes: React.FC = () => {
                   setShowPunchline(false);
                   fetchJoke(setJoke, setLoading);
                 }}
-                className="px-6 py-3 bg-indigo-500 text-white rounded-full shadow-md hover:bg-indigo-600 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 flex items-center transition-colors duration-200 text-lg"
+                className="w-full xs:w-auto px-6 py-3 bg-indigo-500 text-white rounded-full shadow-xs hover:bg-indigo-600 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 flex items-center justify-center transition-colors duration-200 text-base xs:text-lg"
                 disabled={loading}
               >
                 <FaSyncAlt className="mr-2" />
