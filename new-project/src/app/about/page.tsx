@@ -2,105 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaLinkedin, FaGithub, FaHackerrank, FaCode } from "react-icons/fa";
 import { ChevronDown, ChevronUp, Calendar } from "lucide-react";
-
-interface Skill {
-  [key: string]: string;
-}
-
-interface Profile {
-  label: string;
-  value: string;
-  link: string;
-  icon: React.ComponentType<{ className?: string }>;
-}
-
-interface AboutMe {
-  intro: string;
-  skillsAndTechnologies: Skill;
-  profiles: Profile[];
-  otherSkills: Skill;
-}
-
-interface Experience {
-  company: string;
-  role: string;
-  location: string;
-  period: {
-    start: string;
-    end: string;
-  };
-  description: string[];
-}
-
-
-const aboutMe: AboutMe = {
-  intro:
-    "I'm a seasoned full-stack developer with experience across diverse projects, specializing in databases, programming languages, and cloud tools to drive scalable web development.",
-  skillsAndTechnologies: {
-    "Programming Languages": "Python, JavaScript, TypeScript, Golang",
-    Backend: "Node.js, Express.js, Django, FastAPI, Golang",
-    Frontend: "ReactJS, NextJS, Redux",
-    "Database & Tools":
-      "SQL, MongoDB, AWS, Redis, Nginx, Jenkins, React Router",
-  },
-  profiles: [
-    {
-      label: "LinkedIn",
-      value: "trivedirushabh",
-      link: "https://www.linkedin.com/in/trivedirushabh/",
-      icon: FaLinkedin,
-    },
-    {
-      label: "GitHub",
-      value: "rushabhT3",
-      link: "https://github.com/rushabhT3/",
-      icon: FaGithub,
-    },
-    {
-      label: "LeetCode",
-      value: "rushabhtrivedi03",
-      link: "https://leetcode.com/rushabhtrivedi03",
-      icon: FaCode,
-    },
-    {
-      label: "HackerRank",
-      value: "rushabhtrivedi03",
-      link: "https://www.hackerrank.com/profile/rushabhtrivedi03",
-      icon: FaHackerrank,
-    },
-  ],
-  otherSkills: {
-    "Spoken Languages": "English, Hindi, Marathi",
-    "Digital Marketing":
-      "Fundamentals of Digital Marketing (Google Garage Certification)",
-  },
-};
-
-
-// Experience data - Add new experiences here
-const experiences: Experience[] = [
-  {
-    company: "Polynomial AI",
-    role: "Software Engineer L1",
-    location: "Surat, Gujarat, India",
-    period: {
-      start: "Nov 2024",
-      end: "Present",
-    },
-    description: [
-      "Contributing to a tech stack migration project, transitioning from Flask/MongoDB to Django/PostgreSQL",
-      "Developing and implementing machine learning models for use cases in the company's intelligence system.",
-    ],
-  },
-];
-
-
-interface SkillCardProps {
-  title: string;
-  skills: Skill;
-}
+import { aboutMeData, experienceData } from "./data";
+import type { Experience, SkillCardProps } from "./types";
 
 const ExperienceCard: React.FC<{ experience: Experience }> = ({
   experience,
@@ -116,7 +20,7 @@ const ExperienceCard: React.FC<{ experience: Experience }> = ({
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-4 transition-shadow duration-300">
         <div
           onClick={() => setIsExpanded(!isExpanded)}
-          className="flex flex-col sm:flex-row sm:justify-between sm:items-center cursor-pointer space-y-4 sm:space-y-0"
+          className="flex flex-col sm:flex-row sm:justify-between sm:items-center cursor-pointer space-y-4 sm:space-y-0 select-none"
         >
           {/* Company and Role Information */}
           <div className="flex items-start sm:items-center space-x-4">
@@ -157,19 +61,46 @@ const ExperienceCard: React.FC<{ experience: Experience }> = ({
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
               className="mt-4 overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
             >
-              <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-                <ul className="list-disc list-inside space-y-2">
-                  {experience.description.map((point, index) => (
-                    <li
-                      key={index}
-                      className="text-gray-600 dark:text-gray-400"
-                    >
-                      {point}
-                    </li>
-                  ))}
-                </ul>
+              <div
+                className="pt-4 border-t border-gray-200 dark:border-gray-700"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="space-y-4">
+                  {/* Responsibilities Section */}
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
+                      Key Responsibilities
+                    </h4>
+                    <ul className="list-disc list-inside space-y-2">
+                      {experience.description.map((point, index) => (
+                        <li
+                          key={index}
+                          className="text-gray-600 dark:text-gray-400"
+                        >
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Tech Stack Section */}
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
+                      Technologies Used
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {experience.techStack.map((tech, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           )}
@@ -178,7 +109,6 @@ const ExperienceCard: React.FC<{ experience: Experience }> = ({
     </motion.div>
   );
 };
-
 
 const ExperienceTimeline: React.FC = () => {
   return (
@@ -192,7 +122,7 @@ const ExperienceTimeline: React.FC = () => {
         Professional Experience
       </h2>
       <div className="space-y-4">
-        {experiences.map((exp, index) => (
+        {experienceData.map((exp, index) => (
           <ExperienceCard key={index} experience={exp} />
         ))}
       </div>
@@ -240,7 +170,6 @@ export default function About() {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = (e: MediaQueryListEvent) => setDarkMode(e.matches);
 
-    // Use addEventListener instead of addListener
     mediaQuery.addEventListener("change", handleChange);
 
     return () => mediaQuery.removeEventListener("change", handleChange);
@@ -266,7 +195,7 @@ export default function About() {
             className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl mb-8"
           >
             <p className="text-xl leading-relaxed text-gray-700 dark:text-gray-300">
-              {aboutMe.intro}
+              {aboutMeData.intro}
             </p>
           </motion.div>
 
@@ -275,9 +204,9 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <SkillCard
               title="Skills and Technologies"
-              skills={aboutMe.skillsAndTechnologies}
+              skills={aboutMeData.skillsAndTechnologies}
             />
-            <SkillCard title="Other Skills" skills={aboutMe.otherSkills} />
+            <SkillCard title="Other Skills" skills={aboutMeData.otherSkills} />
           </div>
 
           <motion.div
@@ -290,7 +219,7 @@ export default function About() {
               Profiles
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
-              {aboutMe.profiles.map((profile) => (
+              {aboutMeData.profiles.map((profile) => (
                 <a
                   key={profile.label}
                   href={profile.link}
