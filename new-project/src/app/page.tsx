@@ -5,6 +5,33 @@ import Link from "next/link";
 import { ArrowRight, FileText, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
+// const skillsData = [
+//   {
+//     title: "Programming Languages",
+//     description: "Python, JavaScript, Go, TypeScript",
+//   },
+//   {
+//     title: "Frontend Development",
+//     description: "React, Next.js, Tailwind CSS",
+//   },
+//   {
+//     title: "Backend Development",
+//     description: "Django, FastAPI, Node.js, Express, Go",
+//   },
+//   {
+//     title: "Database",
+//     description: "PostgreSQL, MongoDB",
+//   },
+//   {
+//     title: "Cloud & DevOps",
+//     description: "AWS, Docker",
+//   },
+//   {
+//     title: "Machine Learning",
+//     description: "ML Models, Intelligence Systems",
+//   },
+// ];
+
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const resumeLink =
@@ -38,15 +65,39 @@ export default function Home() {
               Rushabh Trivedi
             </span>
           </motion.h1>
+
+          {/* welcome text */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-6 text-xl text-gray-600 dark:text-gray-300 sm:text-2xl text-center"
+            className="mt-6 text-xl text-gray-600 dark:text-gray-300 sm:text-2xl text-center max-w-3xl"
           >
-            Welcome to my portfolio website! Here, you'll find information about
-            my skills, projects, and ways to get in touch with me.
+            A Software Developer passionate about building scalable web
+            applications and implementing machine learning solutions.
+            Specializing in full-stack development with modern technologies
           </motion.p>
+          {/* <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center max-w-3xl"
+          >
+            {skillsData.map((item, index) => (
+              <div
+                key={index}
+                className="p-4 rounded-lg bg-white/10 backdrop-blur-sm dark:bg-gray-800/50"
+              >
+                <h3 className="font-bold text-gray-900 dark:text-white">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </motion.div> */}
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
