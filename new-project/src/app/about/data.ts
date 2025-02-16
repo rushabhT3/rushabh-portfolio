@@ -55,8 +55,9 @@ export const experienceData: Experience[] = [
       end: "Present",
     },
     description: [
-      "Contributing to a tech stack migration project, transitioning from Flask/MongoDB to Django/PostgreSQL",
-      "Developing and implementing machine learning models for use cases in the company's intelligence system.",
+      "Developed and optimized 40+ Django-based APIs (both new implementations and existing system enhancements) with PostgreSQL database models as part of a large-scale migration project (from Flask/MongoDB to Django/PostgreSQL)",
+      "Enhanced system performance and functionality by integrating Docker for containerization, AWS SDK for cloud services, and Celery for asynchronous task management",
+      "Developed an OpenAI CLIP-based machine learning model for document verification system, filtering 900+ false documents monthly and significantly reducing manual workload"
     ],
     techStack: [
       "Python",
