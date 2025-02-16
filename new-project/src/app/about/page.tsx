@@ -5,24 +5,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp, Calendar } from "lucide-react";
 import { aboutMeData, experienceData } from "./data";
 import type { Experience, SkillCardProps } from "./types";
-import { useWindowSize } from '@/hooks/useWindowSize';
 
 const ExperienceCard: React.FC<{ experience: Experience; isLast: boolean }> = ({
   experience,
   isLast,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const { width } = useWindowSize();
-  const isMobile = width ? width < 640 : false;
 
   return (
     <div className="relative">
       {/* Timeline Line - Only rendered on sm and above */}
-      {!isMobile && (
-        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-800">
-          <div className="absolute left-1/2 top-6 w-3 h-3 -ml-1.5 bg-blue-500 rounded-full" />
-        </div>
-      )}
+      <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-800 hidden sm:block">
+        <div className="absolute left-1/2 top-6 w-3 h-3 -ml-1.5 bg-blue-500 rounded-full" />
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
