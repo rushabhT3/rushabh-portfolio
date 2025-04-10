@@ -54,10 +54,11 @@ export const experienceData: Experience[] = [
       start: "Nov 2024",
       end: "Present",
     },
-    description: [
-      "Developed and optimized 40+ Django-based APIs (both new implementations and existing system enhancements) with PostgreSQL database models as part of a large-scale migration project (from Flask/MongoDB to Django/PostgreSQL)",
-      "Enhanced system performance and functionality by integrating Docker for containerization, AWS SDK for cloud services, and Celery for asynchronous task management",
-      "Developed an OpenAI CLIP-based machine learning model for document verification system, filtering 900+ false documents monthly and significantly reducing manual workload"
+    "description": [
+      "Developed 30+ new APIs and updated 50+ Django-based APIs with PostgreSQL database models in invoice intelligence project",
+      "Enhanced system performance by integrating Docker for containerization, AWS SDK for cloud services, Celery for asynchronous tasks, and Grafana for performance monitoring",
+      "Achieved 1000x faster OCR processing for specific documents using PyMuPDF (fitz) library",
+      "Developed an OpenAI CLIP-based machine learning model for document verification system, filtering 1000+ false documents monthly"
     ],
     techStack: [
       "Python",
