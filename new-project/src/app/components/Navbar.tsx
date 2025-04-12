@@ -1,3 +1,4 @@
+// src/app/components/Navbar.tsx
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
@@ -10,6 +11,7 @@ import {
   FaLaugh,
   FaEnvelope,
 } from "react-icons/fa";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [hovered, setHovered] = useState(false);
@@ -60,7 +62,7 @@ const Navbar = () => {
     <>
       <motion.nav
         className={`fixed w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-gray-900 shadow-lg" : "bg-gray-800"
+          scrolled ? "bg-gray-900 shadow-lg dark:bg-gray-800" : "bg-gray-800 dark:bg-gray-900"
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -77,7 +79,7 @@ const Navbar = () => {
           >
             Rushabh Trivedi
           </motion.div>
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden md:flex space-x-6 items-center">
             {menuItems.map((item) => (
               <Link key={item.text} href={item.href} passHref>
                 <motion.span
@@ -90,20 +92,24 @@ const Navbar = () => {
                 </motion.span>
               </Link>
             ))}
+            <ThemeToggle />
           </div>
-          <motion.button
-            className="md:hidden text-white text-2xl"
-            onClick={handleMenuToggle}
-            whileTap={{ scale: 0.9 }}
-          >
-            {menuOpen ? <IoMdClose /> : <IoMdMenu />}
-          </motion.button>
+          <div className="md:hidden flex items-center space-x-4">
+            <ThemeToggle />
+            <motion.button
+              className="text-white text-2xl"
+              onClick={handleMenuToggle}
+              whileTap={{ scale: 0.9 }}
+            >
+              {menuOpen ? <IoMdClose /> : <IoMdMenu />}
+            </motion.button>
+          </div>
         </div>
       </motion.nav>
 
       {menuOpen && (
         <motion.div
-          className="fixed inset-0 bg-gray-900 z-40 flex flex-col items-center justify-center"
+          className="fixed inset-0 bg-gray-900 dark:bg-gray-800 z-40 flex flex-col items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -123,7 +129,7 @@ const Navbar = () => {
           ))}
         </motion.div>
       )}
-      <div className="pt-10">{/* Your main content goes here */}</div>
+      <div className="pt-14">{/* Increase padding for content below navbar */}</div>
     </>
   );
 };

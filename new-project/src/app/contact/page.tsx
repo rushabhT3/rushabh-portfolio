@@ -26,25 +26,12 @@ const contactDetails = [
 ];
 
 export default function Contact() {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    const prefersDarkMode = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    setDarkMode(prefersDarkMode);
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = (e: MediaQueryListEvent) => setDarkMode(e.matches);
-
-    mediaQuery.addEventListener("change", handleChange);
-
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
+  // No need to set darkMode state since it's controlled by the navbar
+  // The dark: classes will be applied automatically
 
   return (
-    <div className={`min-h-screen flex flex-col ${darkMode ? "dark" : ""}`}>
-      <div className="flex-grow bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-900 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-grow bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-900 py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
         <div className="max-w-4xl mx-auto space-y-8">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
@@ -59,7 +46,7 @@ export default function Contact() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl mb-8"
+            className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl mb-8 transition-colors duration-200"
           >
             <p className="text-xl leading-relaxed text-gray-700 dark:text-gray-300">
               Feel free to connect with me through the following contact
@@ -71,7 +58,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl"
+            className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl transition-colors duration-200"
           >
             <h2 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">
               Contact Details

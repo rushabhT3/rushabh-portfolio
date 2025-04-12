@@ -112,7 +112,6 @@ const ExperienceCard: React.FC<{ experience: Experience; isLast: boolean }> = ({
   );
 };
 
-
 const ExperienceTimeline: React.FC = () => {
   // Sort experience by comparing dates (using end date if available, otherwise start date)
   const sortedExperience = [...experienceData].sort((a, b) => {
@@ -150,7 +149,6 @@ const ExperienceTimeline: React.FC = () => {
     </motion.div>
   );
 };
-
 
 const SkillCard: React.FC<SkillCardProps> = ({ title, skills }) => (
   <motion.div
@@ -198,64 +196,62 @@ export default function About() {
   }, []);
 
   return (
-    <div className={`min-h-screen flex flex-col ${darkMode ? "dark" : ""}`}>
-      <div className="flex-grow bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-900 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-5xl font-bold text-center mb-8 text-gray-800 dark:text-white"
-          >
-            About Me
-          </motion.h1>
+    <div className="flex-grow bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-900 py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto space-y-8">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-5xl font-bold text-center mb-8 text-gray-800 dark:text-white"
+        >
+          About Me
+        </motion.h1>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl mb-8"
-          >
-            <p className="text-xl leading-relaxed text-gray-700 dark:text-gray-300">
-              {aboutMeData.intro}
-            </p>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl mb-8"
+        >
+          <p className="text-xl leading-relaxed text-gray-700 dark:text-gray-300">
+            {aboutMeData.intro}
+          </p>
+        </motion.div>
 
-          <ExperienceTimeline />
+        <ExperienceTimeline />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <SkillCard
-              title="Skills and Technologies"
-              skills={aboutMeData.skillsAndTechnologies}
-            />
-            <SkillCard title="Other Skills" skills={aboutMeData.otherSkills} />
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl"
-          >
-            <h2 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">
-              Profiles
-            </h2>
-            <div className="flex flex-wrap justify-center gap-4">
-              {aboutMeData.profiles.map((profile) => (
-                <a
-                  key={profile.label}
-                  href={profile.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-semibold py-2 px-4 rounded-full transition duration-300"
-                >
-                  <profile.icon className="mr-2" />
-                  {profile.label}
-                </a>
-              ))}
-            </div>
-          </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <SkillCard
+            title="Skills and Technologies"
+            skills={aboutMeData.skillsAndTechnologies}
+          />
+          <SkillCard title="Other Skills" skills={aboutMeData.otherSkills} />
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl"
+        >
+          <h2 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">
+            Profiles
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {aboutMeData.profiles.map((profile) => (
+              <a
+                key={profile.label}
+                href={profile.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-semibold py-2 px-4 rounded-full transition duration-300"
+              >
+                <profile.icon className="mr-2" />
+                {profile.label}
+              </a>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
