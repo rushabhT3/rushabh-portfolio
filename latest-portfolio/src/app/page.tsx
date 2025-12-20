@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 
 // Environment variables for links
-const RESUME_URL = process.env.NEXT_PUBLIC_RESUME_URL || 'https://drive.google.com/file/d/1U6mMEfduBt3Mr9EGGDS7HYyRma58Av55/view?usp=sharing';
+const RESUME_URL = process.env.NEXT_PUBLIC_RESUME_URL || 'https://drive.google.com/file/d/1M29fnxZjdoBkMNpYXq7-5gJP2GxtlZMJ/view';
 const GITHUB_URL = process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/rushabhT3/';
 const LINKEDIN_URL = process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://www.linkedin.com/in/trivedirushabh/';
 const EMAIL = process.env.NEXT_PUBLIC_EMAIL || 'rushabhtrivedi03@gmail.com';
@@ -488,8 +488,8 @@ const Experience = () => {
     {
       id: 1,
       company: "Coinearth Technologies",
-      position: "SDE (Backend)",
-      period: "Jun 2025 – Present",
+      position: "Backend Developer",
+      period: "Jun 2025 – Nov 2025",
       location: "Hyderabad, India",
       description: "Architecting the backbone of Paycio (Crypto-Fiat) & Indoex (Trading). I handle the money flow—securely and instantly.",
       achievements: [
@@ -503,7 +503,7 @@ const Experience = () => {
     {
       id: 2,
       company: "Polynomial AI",
-      position: "Software Developer L1",
+      position: "Python Django Developer",
       period: "Nov 2024 – May 2025",
       location: "Surat, Gujarat, India",
       description: "Developed the Invoice Intelligence Platform. We turned unstructured documents into structured data using AI.",
