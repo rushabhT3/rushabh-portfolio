@@ -10,7 +10,7 @@ import { SectionHeading } from './SectionHeading';
 
 /**
  * SKILLS SECTION
- * Infinite horizontal scroll with zoom on hover and navigation arrows.
+ * Enhanced with smooth animations and micro-interactions
  */
 const SkillsSection = () => {
   const skillsCategories = [
@@ -79,31 +79,37 @@ const SkillsSection = () => {
   };
 
   return (
-    <section id="skills" className="py-24 bg-white">
+    <section id="skills" className="py-24 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-200/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl animate-float-delayed"></div>
+      </div>
+
       <SectionHeading 
         title="Technical Expertise" 
         subtitle="Comprehensive tech stack across backend, frontend, AI/ML, and DevOps."
       />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Scrollable Container */}
         <div className="relative">
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows with glow effect */}
           <button
             onClick={scrollLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-slate-200 flex items-center justify-center text-slate-600 hover:text-orange-500 hover:border-orange-400 hover:shadow-orange-500/20 transition-all duration-300 -translate-x-6"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full shadow-xl border-2 border-slate-200 flex items-center justify-center text-slate-600 hover:text-orange-500 hover:border-orange-400 hover:shadow-orange-500/30 hover:bg-white transition-all duration-300 -translate-x-6 group"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           
           <button
             onClick={scrollRight}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-slate-200 flex items-center justify-center text-slate-600 hover:text-orange-500 hover:border-orange-400 hover:shadow-orange-500/20 transition-all duration-300 translate-x-6"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full shadow-xl border-2 border-slate-200 flex items-center justify-center text-slate-600 hover:text-orange-500 hover:border-orange-400 hover:shadow-orange-500/30 hover:bg-white transition-all duration-300 translate-x-6 group"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
             </svg>
           </button>
 
@@ -116,17 +122,31 @@ const SkillsSection = () => {
               {skillsCategories.map((category, index) => (
                 <div
                   key={`${category.id}-${index}`}
-                  className="group relative flex-shrink-0 w-80 transition-all duration-300 ease-out hover:scale-110 hover:z-10"
+                  className="group relative flex-shrink-0 w-80 transition-all duration-500 ease-out hover:scale-105 hover:z-10"
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="bg-slate-50 rounded-2xl p-6 border-2 border-slate-200 h-full transition-all duration-300 group-hover:border-orange-400 group-hover:shadow-2xl group-hover:shadow-orange-500/20">
+                  {/* Glow effect on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-20 blur-xl rounded-2xl transition-opacity duration-500`}></div>
+                  
+                  <div className="relative bg-white rounded-2xl p-6 border-2 border-slate-200 h-full transition-all duration-500 group-hover:border-transparent group-hover:shadow-2xl group-hover:shadow-slate-300/50">
+                    {/* Gradient border on hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500 -z-10`}></div>
+                    <div className="absolute inset-[2px] bg-white rounded-2xl -z-10"></div>
+
                     {/* Card Header */}
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-125`}>
-                        {category.icon}
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className={`relative w-16 h-16 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-6`}>
+                        <div className="transition-transform duration-500 group-hover:scale-110">
+                          {category.icon}
+                        </div>
+                        {/* Rotating ring */}
+                        <div className={`absolute inset-0 rounded-xl border-2 border-white/40 opacity-0 group-hover:opacity-100 animate-spin-slow`}></div>
                       </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-1">{category.title}</h3>
-                        <p className="text-slate-600 text-xs">{category.description}</p>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-900 group-hover:to-slate-600 transition-all duration-300">
+                          {category.title}
+                        </h3>
+                        <p className="text-slate-600 text-xs leading-relaxed">{category.description}</p>
                       </div>
                     </div>
                     
@@ -136,7 +156,8 @@ const SkillsSection = () => {
                         {category.skills.map((skill, skillIndex) => (
                           <span 
                             key={skillIndex}
-                            className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-medium text-slate-700 transition-all duration-300 group-hover:border-orange-300 group-hover:text-orange-600 group-hover:bg-orange-50"
+                            className={`px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 transition-all duration-300 hover:scale-105 hover:shadow-md cursor-default group-hover:bg-gradient-to-br group-hover:${category.color} group-hover:text-black group-hover:border-transparent`}
+                            style={{ transitionDelay: `${skillIndex * 30}ms` }}
                           >
                             {skill}
                           </span>
@@ -150,23 +171,23 @@ const SkillsSection = () => {
           </div>
         </div>
 
-        {/* Instructions */}
+        {/* Enhanced Badge */}
         <div className="text-center mt-16">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold shadow-lg shadow-orange-500/30">
+          <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 text-white font-bold shadow-xl shadow-orange-500/40 hover:shadow-2xl hover:shadow-orange-500/50 hover:scale-105 transition-all duration-300 cursor-default bg-[length:200%_auto] animate-gradient">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
             </span>
-            Solid year of hands-on experience
+            <span className="tracking-wide">Solid year of hands-on experience</span>
           </div>
-          <p className="mt-6 text-slate-600 max-w-2xl mx-auto">
+          <p className="mt-6 text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Use arrow buttons or scroll horizontally to explore different technology domains. 
             From building scalable fintech infrastructure to implementing AI-powered document processing.
           </p>
         </div>
       </div>
 
-      {/* Custom scrollbar styles */}
+      {/* Custom scrollbar and animation styles */}
       <style jsx>{`
         .scrollbar-hide {
           -ms-overflow-style: none;
@@ -177,6 +198,35 @@ const SkillsSection = () => {
         }
         .scroll-smooth {
           scroll-behavior: smooth;
+        }
+        @keyframes float {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+        @keyframes float-delayed {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(-30px, 30px) scale(1.1); }
+        }
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-float {
+          animation: float 20s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+          animation: float-delayed 25s ease-in-out infinite;
+        }
+        .animate-spin-slow {
+          animation: spin-slow 3s linear infinite;
+        }
+        .animate-gradient {
+          animation: gradient 3s linear infinite;
         }
       `}</style>
     </section>

@@ -22,7 +22,7 @@ const Projects = () => {
       desc: "Full-stack logistics platform automating route planning, HOS compliance, and intelligent log sheet generation with geospatial visualization.",
       icon: <MapPin className="text-white" size={24} />,
       color: "from-indigo-500 to-blue-600",
-      link: process.env.NEXT_PUBLIC_ATLAS_URL || '#'
+      link: ATLAS_URL
     },
     {
       title: "JobSync AI Pro: Resume Optimizer",
@@ -30,7 +30,7 @@ const Projects = () => {
       desc: "AI-powered resume optimizer with ATS match scoring, PDF parsing, rewrite suggestions using Google Gemini, and interactive analytics.",
       icon: <Brain className="text-white" size={24} />,
       color: "from-teal-500 to-emerald-600",
-      link: process.env.NEXT_PUBLIC_JOBSYNC_URL || '#'
+      link: JOBSYNC_URL
     },
     {
       title: "Full Stack Mailbox",
