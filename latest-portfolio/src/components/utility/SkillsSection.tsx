@@ -119,7 +119,7 @@ const SkillsSection = () => {
             className="overflow-x-auto pb-6 scrollbar-hide scroll-smooth"
           >
             <div className="flex gap-6 min-w-max px-20">
-              {skillsCategories.map((category, index) => (
+              {Array(10).fill(skillsCategories).flat().map((category, index) => (
                 <div
                   key={`${category.id}-${index}`}
                   className="group relative flex-shrink-0 w-80 transition-all duration-500 ease-out hover:scale-105 hover:z-10"

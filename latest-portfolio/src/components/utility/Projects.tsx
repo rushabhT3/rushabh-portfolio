@@ -1,10 +1,10 @@
 import { 
   Mail, 
-  Globe, 
-  Zap,
   ChevronRight,
   MapPin,
-  Brain
+  Brain,
+  MessageCircle,
+  PawPrint
 } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
 import { ANIMAL_APP_URL, ATLAS_URL, JOBSYNC_URL, FULLSTACK_MAILBOX_URL, REALTIME_CHAT_URL } from '@/lib/constants';
@@ -44,7 +44,7 @@ const Projects = () => {
       title: "Real-Time Group Chat",
       category: "Socket.io, Node.js, MySQL",
       desc: "Dynamic group chat application with real-time messaging, user authentication, message encryption, and AWS storage.",
-      icon: <Zap className="text-white" size={24} />,
+      icon: <MessageCircle className="text-white" size={24} />,
       color: "from-purple-500 to-pink-500",
       link: REALTIME_CHAT_URL
     },
@@ -52,7 +52,7 @@ const Projects = () => {
       title: "Full Stack Animal App",
       category: "FastAPI, React.js, SQL",
       desc: "Animal management system with favoriting capabilities, intuitive UI, SQLAlchemy ORM, and Pydantic validation.",
-      icon: <Globe className="text-white" size={24} />,
+      icon: <PawPrint className="text-white" size={24} />,
       color: "from-rose-400 to-pink-600",
       link: ANIMAL_APP_URL
     }
