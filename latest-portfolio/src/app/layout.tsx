@@ -14,12 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rushabh Trivedi - Python Django Developer | Node.js Backend Engineer | Hyderabad",
-  description: "Hire Rushabh Trivedi: Expert Python Django/FastAPI & Node.js Backend Developer in Hyderabad. 1+ years building scalable fintech APIs, microservices, AI/ML systems. Specialized in PostgreSQL, Redis, AWS, Docker. Available for backend/fullstack roles.",
+  title: "Rushabh Trivedi - Full Stack Developer | Python Django Next.js & Django | Hyderabad",
+  description: "Hire Rushabh Trivedi: Full Stack Developer specializing in Next.js, React, TypeScript, Python (Django/FastAPI) & Node.js. 1+ years building scalable web apps, fintech APIs, microservices, AI/ML systems, and polished frontends. Expert in PostgreSQL, Redis, AWS, Docker, Tailwind CSS. Available for full-stack/backend roles.",
   keywords: [
     // Primary keywords
-    "python backend developer", "django developer", "fastapi developer", "node.js backend engineer",
-    "backend developer hyderabad", "fullstack developer india", "python django developer hire",
+    "python backend developer", "full stack developer", "backend developer", "next.js developer", "react developer", "typescript developer", 
+    "python developer", "django developer", "fastapi developer", "node.js developer",
     
     // Job titles
     "software development engineer", "backend engineer", "fullstack engineer", "python developer",
@@ -28,13 +28,16 @@ export const metadata: Metadata = {
     // Technologies
     "django rest framework", "express.js developer", "postgresql developer", "redis developer",
     "aws backend developer", "docker developer", "celery python", "socket.io developer",
+    "next.js", "react", "tailwind css", "typescript", "django rest framework", "express.js",
+    "postgresql", "redis", "aws", "docker",
     
     // Specializations
-    "fintech backend developer", "payment gateway developer", "ai ml developer", "scalable api developer",
+    "fintech backend developer", "payment gateway developer", "ai ml developer", "scalable api developer", "responsive ui",
     "microservices architecture", "high throughput systems", "event-driven architecture",
     
     // Location-based
     "backend developer hyderabad india", "remote python developer", "indian backend engineer",
+    "fullstack developer hyderabad india", "remote fullstack developer",
     
     // Experience level
     "mid-level backend developer", "experienced python developer", "production-ready developer",
@@ -65,22 +68,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://rushabh-portfolio-iz62.vercel.app/",
-    siteName: "Rushabh Trivedi - Backend Developer Portfolio",
-    title: "Rushabh Trivedi - Python Django & Node.js Backend Developer | Hire for Fintech & AI Projects",
-    description: "Senior Backend Engineer specializing in Python (Django/FastAPI) & Node.js. Built 20+ microservices, fintech payment gateways, AI document systems. Expert in PostgreSQL, Redis, AWS. Open to backend/fullstack opportunities in Hyderabad & remote.",
+    siteName: "Rushabh Trivedi - Full Stack AI Developer Portfolio",
+    title: "Rushabh Trivedi - Full Stack Developer (Next.js, Django, Node.js) | Hire for Fintech & AI Projects",
+    description: "Full Stack Developer experienced in building end-to-end applications with Next.js/React frontends and Python (Django/FastAPI) & Node.js backends. Built 20+ microservices, fintech payment gateways, AI document systems. Expert in PostgreSQL, Redis, AWS. Open to backend/fullstack opportunities in Hyderabad & remote.",
     images: [
       {
         url: "https://cdn.inspireuplift.com/uploads/images/seller_products/1685470723_105.jpg",
         width: 1200,
         height: 630,
-        alt: "Rushabh Trivedi - Backend Developer Portfolio",
+        alt: "Rushabh Trivedi - Full Stack Developer Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rushabh Trivedi - Python Django & Node.js Backend Developer",
-    description: "Experienced Backend Engineer | Django, FastAPI, Node.js | Built fintech microservices & AI systems | Available for hire",
+    title: "Rushabh Trivedi - Full Stack Developer | Next.js, React, Django, Node.js",
+    description: "Experienced Full Stack Developer: Next.js, React, TypeScript, Django, FastAPI, Node.js. Built production-grade web apps, APIs, and deployable systems.",
     creator: "@rushabhT3",
     images: ["https://cdn.inspireuplift.com/uploads/images/seller_products/1685470723_105.jpg"],
   },
@@ -111,14 +114,14 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Rushabh Trivedi",
-            "jobTitle": "Python Backend & AI/ML Developer | MERN Developer",
-            "description": "Software Development Engineer specializing in Python Django/FastAPI and Node.js backend development",
+            "jobTitle": "Full Stack Developer | Python Backend & AI/ML Developer | MERN Stack Developer",
+            "description": "Software Development Engineer specializing in Python (Django/FastAPI) & Node.js backends & Next.js/React frontends",
             "url": "https://rushabh-portfolio-iz62.vercel.app/",
             "email": "rushabhtrivedi03@gmail.com",
             "telephone": "+918380048166",
             "address": {
               "@type": "PostalAddress",
-              "addressLocality": "Hyderabad",
+              "addressLocality": "Hyderabad", 
               "addressCountry": "IN"
             },
             "sameAs": [
@@ -128,7 +131,8 @@ export default function RootLayout({
               "https://www.hackerrank.com/rushabhtrivedi03"
             ],
             "knowsAbout": [
-              "Python", "Django", "FastAPI", "Node.js", "Express.js", "PostgreSQL", 
+              "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS",
+              "Python", "Django", "FastAPI", "Node.js", "Express.js", "PostgreSQL",
               "Redis", "AWS", "Docker", "Microservices", "REST APIs", "AI/ML"
             ],
             "worksFor": [
